@@ -1,6 +1,6 @@
 CREATE DATABASE Bromatologia;
 USE Bromatologia;
--- DROP DATABASE Bromatologia;--
+-- DROP DATABASE Bromatologia; --
 -- CURSO MANIPULACION ALIMENTOS --
 
 CREATE TABLE Datos_Personales (
@@ -111,7 +111,7 @@ CREATE TABLE Habilitacion_vehiculos (
     id_segundo_control INT NOT NULL,
     id_inspector INT NOT NULL,
 	Fecha  DATE NOT NULL,
-	CONSTRAINT PK_SEGUNDO_CONTROL PRIMARY KEY (id_segundo_control),
+	CONSTRAINT PK_SEGUNDO_CONTROL PRIMARY KEY (id_registro),
     FOREIGN KEY (id_inspector) REFERENCES Inspectores(id_inspector) ON DELETE RESTRICT ON UPDATE CASCADE,
     FOREIGN KEY (id_segundo_control) REFERENCES Segundo_control(id_segundo_control) ON DELETE RESTRICT ON UPDATE CASCADE,
     FOREIGN KEY (id_rubro_vehiculo) REFERENCES Rubros_vehiculos(id_rubro_vehiculo) ON DELETE RESTRICT ON UPDATE CASCADE,
