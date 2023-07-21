@@ -34,7 +34,7 @@ CREATE TABLE Curso_Manipulacion (
   id_curso INT NOT NULL AUTO_INCREMENT UNIQUE,
   id_profesor INT NOT NULL,
   id_alumno INT NOT NULL UNIQUE,
-  id_nota INT NOT NULL,
+  id_nota INT,
   Fecha_inicio DATE NOT NULL,
   Fecha_final DATE,
   CONSTRAINT PK_CURSO PRIMARY KEY (id_curso),
@@ -43,8 +43,8 @@ CREATE TABLE Curso_Manipulacion (
 
 CREATE TABLE Alumnos (
 	id_alumno INT NOT NULL AUTO_INCREMENT UNIQUE,
-    id_curso INT NOT NULL,
-    id_nota INT NOT NULL,
+    id_curso INT,
+    id_nota INT,
     Nombre  VARCHAR (50) NOT NULL,
 	Apellido VARCHAR (50) NOT NULL,
     Telefono VARCHAR (20),
@@ -99,16 +99,18 @@ CREATE TABLE Rubros_vehiculos (
 CREATE TABLE Segundo_control (
 	id_segundo_control INT NOT NULL AUTO_INCREMENT UNIQUE,
 	Acta_vehiculo  VARCHAR (20) NOT NULL UNIQUE,
-    Acta_infraccion  VARCHAR (20) NOT NULL UNIQUE,
-    Fecha_control  DATE NOT NULL,
-	CONSTRAINT PK_SEGUNDO_CONTROL PRIMARY KEY (id_segundo_control)
+    Acta_infraccion  VARCHAR (20) UNIQUE,
+    Fecha_control  DATE,
+    id_vehiculo INT NOT NULL,
+	CONSTRAINT PK_SEGUNDO_CONTROL PRIMARY KEY (id_segundo_control),
+    FOREIGN KEY (id_vehiculo) REFERENCES Vehiculos(id_vehiculo) ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
 CREATE TABLE Habilitacion_vehiculos (
 	id_registro INT NOT NULL AUTO_INCREMENT UNIQUE,
 	id_vehiculo INT NOT NULL,
     id_rubro_vehiculo INT NOT NULL,
-    id_segundo_control INT NOT NULL,
+    id_segundo_control INT,
     id_inspector INT NOT NULL,
 	Fecha  DATE NOT NULL,
 	CONSTRAINT PK_SEGUNDO_CONTROL PRIMARY KEY (id_registro),
@@ -129,7 +131,6 @@ CREATE TABLE Rubros_comercio (
 CREATE TABLE Comercios (
 	id_comercio INT NOT NULL AUTO_INCREMENT UNIQUE,
     id_rubro_comercio INT NOT NULL,
-	Rubros  VARCHAR (100) NOT NULL,
     Razon_social  VARCHAR (50) NOT NULL,
     Direccion  VARCHAR (50) NOT NULL,
     Expediente_habilitacion  VARCHAR (20),
@@ -148,6 +149,7 @@ CREATE TABLE Actas (
 CREATE TABLE Denuncias (
 	id_denuncia INT NOT NULL AUTO_INCREMENT UNIQUE,
     id_acta INT UNIQUE,
+    Direccion VARCHAR (100) NOT NULL,
 	Descripcion  VARCHAR (100) NOT NULL,
     Fecha DATE NOT NULL,
     Numero_orden INT NOT NULL UNIQUE,
