@@ -1,6 +1,8 @@
+
+DROP DATABASE IF EXISTS  Bromatologia;
 CREATE DATABASE Bromatologia;
 USE Bromatologia;
--- DROP DATABASE Bromatologia; --
+
 -- CURSO MANIPULACION ALIMENTOS --
 
 CREATE TABLE Datos_Personales (
@@ -47,10 +49,12 @@ CREATE TABLE Alumnos (
     id_nota INT,
     Nombre  VARCHAR (50) NOT NULL,
 	Apellido VARCHAR (50) NOT NULL,
+	DNI VARCHAR (20) NOT NULL UNIQUE,
     Telefono VARCHAR (20),
 	Email VARCHAR (130),
     CONSTRAINT PK_ALUMNOS PRIMARY KEY (id_alumno),
-	FOREIGN KEY (id_curso) REFERENCES Curso_Manipulacion(id_curso) ON DELETE RESTRICT ON UPDATE CASCADE
+	FOREIGN KEY (id_curso) REFERENCES Curso_Manipulacion(id_curso) ON DELETE RESTRICT ON UPDATE CASCADE,
+	INDEX idx_dni (DNI)
 );
 
 CREATE TABLE Notas (
@@ -87,7 +91,8 @@ CREATE TABLE Vehiculos (
     Numero_habilitacion INT NOT NULL UNIQUE,
 	Patente  VARCHAR (50) NOT NULL,
     Razon_social  VARCHAR (50) NOT NULL,
-	CONSTRAINT PK_VEHICULOS PRIMARY KEY (id_vehiculo)
+	CONSTRAINT PK_VEHICULOS PRIMARY KEY (id_vehiculo),
+    INDEX idx_numero_habilitacion (Numero_habilitacion)
 );
 
 CREATE TABLE Rubros_vehiculos (
@@ -133,17 +138,23 @@ CREATE TABLE Comercios (
     id_rubro_comercio INT NOT NULL,
     Razon_social  VARCHAR (50) NOT NULL,
     Direccion  VARCHAR (50) NOT NULL,
-    Expediente_habilitacion  VARCHAR (20),
+    Expediente_habilitacion  VARCHAR (20) UNIQUE,
     Numero_cuenta  VARCHAR (20),
 	CONSTRAINT PK_COMERCIOS PRIMARY KEY (id_comercio),
-    FOREIGN KEY (id_rubro_comercio) REFERENCES Rubros_comercio(id_rubro_comercio) ON DELETE RESTRICT ON UPDATE CASCADE
+    FOREIGN KEY (id_rubro_comercio) REFERENCES Rubros_comercio(id_rubro_comercio) ON DELETE RESTRICT ON UPDATE CASCADE,
+	INDEX idx_expediente_habilitacion (Expediente_habilitacion)
 );
 
 CREATE TABLE Actas (
 	id_acta INT NOT NULL AUTO_INCREMENT UNIQUE,
-    Numero_acta VARCHAR (50) NOT NULL,
+    Acta_inspeccion VARCHAR (20) NOT NULL UNIQUE,
+    Acta_constatacion VARCHAR (20) UNIQUE,
+    Acta_comiso VARCHAR (20),
+    Acta_clausura VARCHAR (20),
+    Acta_secuentro_intervencion VARCHAR (20),
 	Descripcion  VARCHAR (100) NOT NULL,
-	CONSTRAINT PK_ACTAS PRIMARY KEY (id_acta)
+	CONSTRAINT PK_ACTAS PRIMARY KEY (id_acta),
+    INDEX idx_acta_inspeccion (Acta_inspeccion)
 );
 
 CREATE TABLE Denuncias (
@@ -188,5 +199,3 @@ ALTER TABLE Curso_Manipulacion ADD CONSTRAINT fk_curso_manipulacion_alumno FOREI
 ALTER TABLE Curso_Manipulacion ADD CONSTRAINT fk_curso_manipulacion_nota FOREIGN KEY (id_nota) REFERENCES Notas(id_nota);
 
 ALTER TABLE Alumnos ADD CONSTRAINT fk_Alumnos_nota FOREIGN KEY (id_nota) REFERENCES Notas(id_nota);
-
-
