@@ -6,7 +6,7 @@ RETURNS INT
 reads sql data
 BEGIN
 	declare resultado INT;
-    SET resultado =  (SELECT COUNT(id_resgistro) AS Habilitaciones
+    SET resultado =  (SELECT COUNT(id_registro) AS Habilitaciones
 		FROM bromatologia.habilitacion_vehiculos
         WHERE Fecha BETWEEN fecha AND current_date);
 	RETURN resultado;
