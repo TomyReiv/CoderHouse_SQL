@@ -1,5 +1,5 @@
 DELIMITER $$
--- Se debe usar uno de los campos precentes en el VIEW de comercios y la direccion en mayusculas (ASC o DESC) --
+-- Se debe usar uno de los campos precentes en el VIEW de comercios y la direccion en mayusculas (ASC o DESC). Ordena la habilitacion de comercios de forma ascendente o descendente --
 DROP PROCEDURE IF EXISTS `sp_vw_comercio_orden` $$
 CREATE PROCEDURE `sp_vw_comercio_orden` (IN campo VARCHAR(30), IN direccion VARCHAR(4))
 BEGIN
@@ -15,7 +15,7 @@ BEGIN
 	DEALLOCATE PREPARE ejecutar;
 END $$
 
--- Se debe usar un DNI de los insertados en alumnos y una nota INT --
+-- Se debe usar un DNI de los insertados en alumnos y una nota INT. Actualiza las tablas de curso de manipulacion de alimentos y de alumnos cada vez q se cargue una nota. --
 DROP PROCEDURE IF EXISTS `sp_alumnos_nota` $$
 CREATE PROCEDURE `sp_alumnos_nota`(IN nota INT, IN alumno_DNI VARCHAR(30))
 BEGIN

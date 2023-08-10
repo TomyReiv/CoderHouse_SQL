@@ -69,10 +69,10 @@ INSERT INTO segundo_control VALUES
 (null, '32567B', null, null, 1);
 
 INSERT INTO habilitacion_vehiculos VALUES 
-(null, 1, 3, 1, 1, current_date),
-(null, 2, 2, null, 1, current_date),
-(null, 3, 2, null, 1, current_date),
-(null, 4, 1, null, 1, current_date);
+(null, 1, 3, 1, 1, current_date, null),
+(null, 2, 2, null, 1, current_date, null),
+(null, 3, 2, null, 1, current_date, null),
+(null, 4, 1, null, 1, current_date, null);
 
 -- grupos de inspectores--
 INSERT INTO grupos VALUES 

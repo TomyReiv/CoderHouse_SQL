@@ -118,6 +118,7 @@ CREATE TABLE Habilitacion_vehiculos (
     id_segundo_control INT DEFAULT NULL,
     id_inspector INT NOT NULL,
 	Fecha  DATE NOT NULL,
+    Observaciones VARCHAR(100) DEFAULT NULL, 
 	CONSTRAINT PK_SEGUNDO_CONTROL PRIMARY KEY (id_registro),
     FOREIGN KEY (id_inspector) REFERENCES Inspectores(id_inspector) ON DELETE RESTRICT ON UPDATE CASCADE,
     FOREIGN KEY (id_segundo_control) REFERENCES Segundo_control(id_segundo_control) ON DELETE RESTRICT ON UPDATE CASCADE,

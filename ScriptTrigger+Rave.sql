@@ -107,7 +107,7 @@ CREATE TABLE log_comercio_evento_NEW (
 
 -- Creacion de TRIGGERS --
 
-
+-- Se creo un trigger por cada tabla importante, que se activan cada vez q se inserta, actualiza o elimina datos --
 
 DELIMITER $$
 

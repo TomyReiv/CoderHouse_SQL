@@ -1,6 +1,6 @@
 
 
--- VIEW para visualizar las habilitaciones de vehiculos --
+-- VIEW para visualizar las habilitaciones de vehiculos, se crea para acceder rapidamente a toda la informacion de las habilitaciones de vehiculos --
 
 CREATE OR REPLACE VIEW View_Habilitacion_Vehiculos AS
 SELECT
@@ -36,7 +36,7 @@ JOIN
 LEFT JOIN
     Segundo_control sc ON hv.id_segundo_control = sc.id_segundo_control;
     
--- VIEW visualizacion habilitacion de comercios --
+-- VIEW visualizacion habilitacion de comercios, se crea para acceder rapidamente a toda la informacion de las habilitaciones de comercio --
 
 
 CREATE OR REPLACE VIEW View_Habilitacion_comercios AS
@@ -60,7 +60,7 @@ JOIN
 JOIN
     Grupo_inspectores gi ON hc.id_inspectores = gi.id_inspectores;
 
--- VIEW Inspecciones --
+-- VIEW Inspecciones, se crea para acceder rapidamente a toda la informacion de las inspecciones --
 
 
 CREATE OR REPLACE VIEW View_Comercio AS
@@ -96,7 +96,7 @@ JOIN
 LEFT JOIN
     Denuncias d ON i.id_denuncia = d.id_denuncia;
 
--- VIEW Cursos --
+-- VIEW Cursos, se crea para acceder rapidamente a toda la informacion de los cursos de manipulacion de alimentos --
 
 CREATE OR REPLACE VIEW View_Curso_manipulacion AS
 SELECT
@@ -120,7 +120,7 @@ JOIN
 LEFT JOIN
     Notas n ON cm.id_nota = n.id_nota;
 
--- VIEW Grupo-inspectores --
+-- VIEW Grupo-inspectores, se crea para acceder rapidamente a toda la informacion de los inspectores --
 
 CREATE OR REPLACE VIEW View_grupo_inspectores AS
 SELECT
