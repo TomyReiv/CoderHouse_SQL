@@ -934,7 +934,8 @@ DELETE FROM habilitacion_comercios WHERE id_habilitacion = 3;
  ROLLBACK;
 
 -- COMMIT;
-
+ START TRANSACTION;
+ 
 -- Segunda consigna de SAVEPONIT --
 
 INSERT INTO vehiculos VALUES (null, 15990, 'VPT100', 'Rabbione');
